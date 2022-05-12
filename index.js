@@ -25,7 +25,7 @@ class ServerlessPlugin {
   }
 
   getPluginConfig() {
-    return this.serverless.service.s3BucketHelper;
+    return this.serverless.configurationInput.s3BucketHelper;
   }
 
   getLoggingConfiguration() {
