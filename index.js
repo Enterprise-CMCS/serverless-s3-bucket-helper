@@ -5,11 +5,40 @@ class ServerlessPlugin {
     this.serverless = serverless;
     this.options = options;
 
+    serverless.configSchemaHandler.defineTopLevelProperty("s3BucketHelper", {
+      type: "object",
+      properties: {
+        loggingConfiguration: {
+          type: "object",
+          properties: {
+            destinationBucketName: { type: "string" },
+            logFilePrefix: { type: "string" },
+          },
+        },
+      },
+    });
+
     this.hooks = {
       // This will configure all S3 buckets according to this plugin.
       "before:deploy:deploy": this.configureBuckets.bind(this),
     };
   }
+
+  getPluginConfig() {
+    return this.serverless.service.s3BucketHelper;
+  }
+
+  getLoggingConfiguration() {
+    const config = this.getPluginConfig();
+    return (
+      config && {
+        DestinationBucketName:
+          config.loggingConfiguration.destinationBucketName,
+        LogFilePrefix: config.loggingConfiguration.logFilePrefix,
+      }
+    );
+  }
+
   configureBuckets() {
     // Forcibly enable versioning for all buckets.
     setPropertyForTypes.call(
@@ -35,6 +64,18 @@ class ServerlessPlugin {
       },
       false
     );
+
+    // Add Logging Configuration configured for the plugin, if any, unless explicity set otherwise. (SecurityHub S3.9)
+    const loggingConfiguration = this.getLoggingConfiguration();
+    if (loggingConfiguration) {
+      setPropertyForTypes.call(
+        this,
+        ["AWS::S3::Bucket"],
+        "LoggingConfiguration",
+        loggingConfiguration,
+        false
+      );
+    }
   }
 }
 
