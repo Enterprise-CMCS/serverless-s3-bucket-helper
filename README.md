@@ -11,7 +11,6 @@ Currently,
 ## Usage
 
 ```yaml
-
 plugins:
   - serverless-s3-bucket-helper
 
