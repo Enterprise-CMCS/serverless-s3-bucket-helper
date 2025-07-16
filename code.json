@@ -1,0 +1,72 @@
+{
+  "name": "serverless-s3-bucket-helper",
+  "description": "This plugin sets settings on all S3 buckets.",
+  "longDescription": "This plugin hooks into the serverless lifecycle at \"before:deploy:deploy\". There, it looks for S3 buckets and potentially modifies each. Currently, versioning is enabled for all buckets and public access is blocked by default. Enabling S3 server access logging requires setting the optional loggingConfiguration for the top level s3BucketHelper property.",
+  "status": "Alpha",
+  "permissions": {
+    "licenses": [
+      {
+        "name": "CC0-1.0",
+        "URL": "https://creativecommons.org/publicdomain/zero/1.0/legalcode"
+      }
+    ],
+    "usageType": "openSource",
+    "exemptionText": ""
+  },
+  "organization": "Centers for Medicare & Medicaid Services",
+  "repositoryURL": "https://github.com/Enterprise-CMCS/serverless-s3-bucket-helper",
+  "projectURL": "",
+  "repositoryHost": "github.com/Enterprise-CMCS",
+  "repositoryVisibility": "public",
+  "vcs": "git",
+  "laborHours": 0,
+  "reuseFrequency": {
+    "forks": 1
+  },
+  "platforms": [
+    "web",
+    "other"
+  ],
+  "categories": [
+    "compliance-management"
+  ],
+  "softwareType": "addon",
+  "languages": [
+    "JavaScript"
+  ],
+  "maintenance": "contract",
+  "contractNumber": "GS-35F-115GA:75FCMC22F0093",
+  "date": {
+    "created": "2021-08-26T16:41:01Z",
+    "lastModified": "2023-07-25T15:43:01Z",
+    "metaDataLastUpdated": "2025-07-16T16:11:47.397Z"
+  },
+  "tags": [
+    "serverless",
+    "s3-helper"
+  ],
+  "contact": {
+    "email": "macpro_operations@gswell.com",
+    "name": ""
+  },
+  "feedbackMechanisms": [
+    "https://github.com/Enterprise-CMCS/serverless-s3-bucket-helper/issues"
+  ],
+  "localisation": false,
+  "repositoryType": "package",
+  "userInput": false,
+  "fismaLevel": "Moderate",
+  "group": "CMS/CMCS/DSG/DIS",
+  "projects": [
+    "Macpro"
+  ],
+  "systems": [],
+  "upstream": "https://github.com/Enterprise-CMCS/serverless-s3-bucket-helper/network/dependencies",
+  "subsetInHealthcare": [
+    "Medicaid"
+  ],
+  "userType": [
+    "Government"
+  ],
+  "maturityModelTier": 1
+}
